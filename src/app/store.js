@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import navResponsiveReducer from '../redux/slices/navResponsiveSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    mobile: navResponsiveReducer,
   },
 });
