@@ -26,7 +26,7 @@ const Payment = () => {
     return (
         <div className='bg-gray-300'>
             <div className='flex flex-col justify-center items-center' style={{height:"calc(100vh - 236px )"}}>
-                <div className='border-2 shadow-lg p-4' style={{width:"1000px", height:"400px", boxShadow:"0 0 5px 5px aqua", backgroundColor:"white"}}>
+                <div className='border-2 shadow-lg p-4' style={{width:"500px", height:"500px", boxShadow:"0 0 5px 5px aqua", backgroundColor:"white"}}>
                     <p className='text-center font-bold text-2xl mb-4 text-blue-400'>BabySister Ground</p>
                     <p className='text-center font-bold text-xl mb-4'>Payment Form</p>
                     <p><u>Please pay to confirm your booking</u></p>
