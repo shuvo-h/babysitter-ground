@@ -22,6 +22,7 @@ const bookingStates = {
         loadingStatus: true,
         rejectedMessage: null
     },
+    singleBooking: {}
 };
 const bookingSlice = createSlice({
     name: "bookingState",
@@ -34,6 +35,10 @@ const bookingSlice = createSlice({
         // add email to booking state
         setEmailToBState: (state, action) =>{
             state.bookingInfo.email = action.payload;
+        },
+        // get a single booking by id
+        getBookingByID: (state, action) =>{
+            state.singleBooking = state.myBooking.myPrevBooking?.filter(booking => booking._id === action.payload);
         },
     },
     extraReducers: (builder) => {
@@ -51,6 +56,6 @@ const bookingSlice = createSlice({
       },
 })
 
-export const {setBookingInfo, setEmailToBState} = bookingSlice.actions;
+export const {setBookingInfo, setEmailToBState, getBookingByID} = bookingSlice.actions;
 
 export default bookingSlice.reducer

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { loadBookings, setBookingInfo, setEmailToBState } from '../../redux/slices/bookingSitterSlice';
 import useAuth from "../../hooks/useAuth"
+import MyBookingList from '../../Components/MyBookingList/MyBookingList';
 
 
 const bookingInputStyle = 'border-2 border-yellow-400 md:w-72 lg:w-96 p-1 rounded';
@@ -11,7 +12,6 @@ const bookingBtnStyle = "bg-blue-200 px-4 py-2 rounded font-bold text-blue-700 h
 const BookingSitter = () => {
     const {user} = useAuth();
     const dispatch = useDispatch();
-    const bookingList = useSelector((state)=>(state.bookingInfo.myBooking.myPrevBooking))
     const inputFieldValue = useSelector(state=>(state.bookingInfo.bookingInfo))
     
     // load previous booking list 
@@ -63,17 +63,7 @@ const BookingSitter = () => {
             <div>
                 <h1 className='font-bold text-2xl'>My Booking List:</h1>
                 <hr />
-                    {
-                        bookingList.map(booking=><ul className='border my-2 mx-auto' style={{width:"400px"}}>
-                            <li>{booking.email}</li>
-                            <li>{booking.payment}</li>
-                            <li>{booking.pay_status}</li>
-                            <li>{booking.release_time}</li>
-                            <li>{booking.admit_time}</li>
-                            <li>{booking.date}</li>
-                        </ul>)
-                    }
-                
+                <MyBookingList></MyBookingList>
             </div>
         </div>
     );

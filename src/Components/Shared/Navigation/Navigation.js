@@ -67,9 +67,7 @@ const Navigation = () => {
                         <span className='border py-1 px-4 rounded bg-gray-300 relative' onMouseEnter={()=>dispatch(changeProfileDpDn())} onMouseLeave={()=>dispatch(changeProfileDpDn())}><button>{user.displayName}</button>
                                 {
                                     isProfileDpDn && <ul className={navDpDnItemsStyle}>
-                                        <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="booking">Booking Sitter</NavLink></li>
-                                        <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="">My Baby</NavLink></li>
-                                        <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="">Payment</NavLink></li>
+                                        <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="booking">Booking</NavLink></li>
                                         <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="/dashboard">Admin Board</NavLink></li>
                                         <li className={`${navDpDnItemStyle} hover:bg-pink-300 hover:text-white-700`} onClick={logOut}><span>Logout</span></li>
                                     </ul>

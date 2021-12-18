@@ -20,6 +20,7 @@ import AllServices from './Pages/AllServices/AllServices';
 import Speciality from './Pages/Speciality/Speciality';
 import TeamMembers from './Pages/TeamMembers/TeamMembers';
 import Blogs from './Pages/Blogs/Blogs';
+import Payment from './Pages/Payment/Payment';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route path="/speciality" element={<Speciality></Speciality>}></Route>
             <Route path="/all-services" element={<AllServices></AllServices>}></Route>
             <Route path="/booking" element={<PrivateRoute><BookingSitter></BookingSitter></PrivateRoute>}></Route>
+            <Route path="/payment/:bookingId" element={<PrivateRoute><Payment></Payment></PrivateRoute>}></Route>
             <Route path="/baby-sitters" element={<BabySitters></BabySitters>}></Route>
             <Route path="/parent-registration" element={<Registration></Registration>}></Route>
             <Route path="/sitter-registration" element={<RegistrationSitter></RegistrationSitter>}></Route>
