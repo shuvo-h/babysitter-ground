@@ -69,7 +69,7 @@ const Navigation = () => {
                                     isProfileDpDn && <ul className={navDpDnItemsStyle}>
                                         <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="booking">Booking</NavLink></li>
                                         <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="/dashboard">Admin Board</NavLink></li>
-                                        <li className={`${navDpDnItemStyle} hover:bg-pink-300 hover:text-white-700`} onClick={logOut}><span>Logout</span></li>
+                                        <li className={`${navDpDnItemStyle} hover:bg-pink-300 hover:text-white-700`} onClick={logOut}><span style={{cursor:'pointer'}}>Logout</span></li>
                                     </ul>
                                 }
                         </span>
