@@ -11,7 +11,7 @@ const useFirebase = () => {
 
     const auth = getAuth();
 
-    const registerNewUser = (name, newEmail,newPassword, photoURL,navigate) =>{
+    const registerNewUser = (name, newEmail,newPassword, photoURL,type,navigate,extraInfo) =>{
         setIsLoading(true)
         createUserWithEmailAndPassword(auth,newEmail,newPassword)
             .then((userCrediential)=>{
@@ -20,14 +20,19 @@ const useFirebase = () => {
                     .then(()=>{
                         // profile updated 
                     })
-                navigate('/home')
+                if (type === "parent") {
+                    sendInfoToDB({email:userCrediential.user.email, name, photoURL, type});
+                }else if (type === "sitter") {
+                    sendSitterInfoToDB({email:userCrediential.user.email, name, photoURL, type,extraInfo});
+                }
+                navigate('/home');
                 window.location.reload();
             })
             .finally(()=>{
                 setIsLoading(false)
             })
     }
-
+    
     useEffect(()=>{
         setIsLoading(true)
         onAuthStateChanged(auth, user=>{
@@ -39,6 +44,37 @@ const useFirebase = () => {
             setIsLoading(false)
         })
     },[auth])
+
+    const sendInfoToDB = (info) =>{
+        fetch("http://localhost:5000/parents",{
+            method:"POST",
+            headers: {
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(info)
+        })
+            .then(res=>res.json())
+            .then(data=>{
+                if (data.insertedId) {
+                    alert("Registration Successful.")
+                }
+            })
+    }
+    const sendSitterInfoToDB = (info) =>{
+        fetch("http://localhost:5000/sitters",{
+            method:"POST",
+            headers: {
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(info)
+        })
+            .then(res=>res.json())
+            .then(data=>{
+                if (data.insertedId) {
+                    alert("Registration Successful.")
+                }
+            })
+    }
 
     const loginUser = (existEmail,existPassword,navigate,locationFrom) =>{
         setIsLoading(true)

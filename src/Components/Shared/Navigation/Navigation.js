@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import { changeAboutDpDn, changeMobileOpen, changeWindowScreen } from '../../../redux/slices/navResponsiveSlice';
+import { changeAboutDpDn, changeMobileOpen, changeProfileDpDn, changeWindowScreen } from '../../../redux/slices/navResponsiveSlice';
 
 // Tailwind CSS style classes  
 const brandStyle = 'text-3xl font-extrabold text-blue-700 md:flex text-center items-center';
@@ -20,8 +20,10 @@ const Navigation = () => {
     const dispatch = useDispatch();
     const isMobileOpen = useSelector((state)=>state.mobile.isToggleOn);
     const isAboutDpDn = useSelector((state)=>state.mobile.isAboutDpDn);
+    const isProfileDpDn = useSelector((state)=>state.mobile.isProfileDpDn);
     const isWindowScreen = useSelector((state)=>(state.mobile.isScreenWidth));
-    console.log(user);
+    
+    
     useEffect(()=>{
         const changeWidth = () =>{
             dispatch(changeWindowScreen(window.innerWidth));
@@ -41,7 +43,7 @@ const Navigation = () => {
             <div><span className={isWindowScreen < 768 ? toggleIconStyle : "hidden"} onClick={handleMobileOpen}>X</span></div>
             <div className={isMobileOpen || isWindowScreen > 768 ? "": "hidden"}>
                 <ul className={navItelsStyle}>
-                    <li className='relative' onMouseEnter={()=>dispatch(changeAboutDpDn())} onMouseLeave={()=>dispatch(changeAboutDpDn())} ><NavLink to="/"> <span  className={navDpDnMenuStyle}> About US</span>
+                    <li className='relative' onMouseEnter={()=>dispatch(changeAboutDpDn())} onMouseLeave={()=>dispatch(changeAboutDpDn())} > <span  className={navDpDnMenuStyle}> About US</span>
                     {
                         isAboutDpDn && <ul className={navDpDnItemsStyle}>
                             <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="">Our Services</NavLink></li>
@@ -53,19 +55,29 @@ const Navigation = () => {
                         </ul>
                     }
                         
-                    </NavLink></li>
+                    </li>
                     <li><NavLink to="/" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>Families</NavLink></li>
                     <li><NavLink to="/" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>Hostels</NavLink></li>
-                    <li><NavLink to="/" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>BabySitters</NavLink></li>
-                    {
-                        user.email && <li><NavLink to="/" className={({isActive})=> isActive ? activeNavLink : navLinkStyle} style={{color:"blue"}}>My Baby</NavLink></li>
-                    }
-                    
+                    <li><NavLink to="/baby-sitters" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>BabySitters</NavLink></li>
                 </ul>
             </div>
                 {
-                    user.email ? <div className='flex items-center'><button className='border py-1 px-4 rounded bg-gray-300'  onClick={()=>logOut()}>Logout</button></div>
-                    : <div className='flex items-center'><NavLink className='font-bold' to="/registration">Login/Register</NavLink></div>
+                    user.email && <div className='flex items-center'>
+                        <span className='border py-1 px-4 rounded bg-gray-300 relative' onMouseEnter={()=>dispatch(changeProfileDpDn())} onMouseLeave={()=>dispatch(changeProfileDpDn())}><button>{user.displayName}</button>
+                                {
+                                    isProfileDpDn && <ul className={navDpDnItemsStyle}>
+                                        <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="booking">Booking Sitter</NavLink></li>
+                                        <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="">My Baby</NavLink></li>
+                                        <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="">Payment</NavLink></li>
+                                        <li className={navDpDnItemStyle} onClick={()=>dispatch(changeProfileDpDn())}><NavLink to="/dashboard">Admin Board</NavLink></li>
+                                        <li className={`${navDpDnItemStyle} hover:bg-pink-300 hover:text-white-700`} onClick={logOut}><span>Logout</span></li>
+                                    </ul>
+                                }
+                        </span>
+                    </div>
+                }
+                {
+                    !user.email && <div className='flex items-center'><NavLink className='font-bold' to="/login">Login/Register</NavLink></div>
                 }
         </div>
     );

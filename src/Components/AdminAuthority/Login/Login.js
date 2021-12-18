@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import useAuth from '../../../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const logInputFieldStyle = 'border-2 border-yellow-400 md:w-72 lg:w-96 p-1 rounded';
 const logBtnStyle = "bg-green-200 px-8 py-2 rounded font-bold text-green-700 hover:bg-green-300"
@@ -34,7 +34,7 @@ const Login = () => {
                     <div className='my-1'><input className={logInputFieldStyle} onBlur={handleLoginOnBlur} name="password" id="standard-basic" label="Password" placeholder='Password' /></div>
                     <div className='my-2 mx-auto'><button className={logBtnStyle} type="submit">Login</button></div>
                 </form>
-                <p className='mt-3'>Don't have an account? <NavLink className="underline text-blue-700"  to="/registration">Register here</NavLink></p>
+                <p className='mt-3'>Don't have an account? Register as <NavLink className="underline text-blue-700"  to="/parent-registration"> a parent</NavLink> or <NavLink className="underline text-blue-700"  to="/sitter-registration">a sitter</NavLink></p>
             </div>
 
             {/* <div sx={{mt:4}}>

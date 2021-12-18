@@ -1,39 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addAllService, loadAllServices } from '../../../redux/slices/serviceSlice';
 import Service from '../../Services/Service/Service';
 
-const services = [
-    {
-        service_id: 1,
-        service_title: "Day Time Care",
-        service_Price: 50,
-        service_str: "lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem",
-        service_img: "https://rukminim1.flixcart.com/image/416/416/k01b8280/sticker/y/h/g/baby017-medium-19-b-sticker017-manial-original-imafjwaujyr24csc.jpeg?q=70"
-    },
-    {
-        service_id: 1,
-        service_title: "Day Time Care",
-        service_Price: 50,
-        service_str: "lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem",
-        service_img: "https://rukminim1.flixcart.com/image/416/416/k01b8280/sticker/y/h/g/baby017-medium-19-b-sticker017-manial-original-imafjwaujyr24csc.jpeg?q=70"
-    },
-    {
-        service_id: 1,
-        service_title: "Day Time Care",
-        service_Price: 50,
-        service_str: "lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem",
-        service_img: "https://rukminim1.flixcart.com/image/416/416/k01b8280/sticker/y/h/g/baby017-medium-19-b-sticker017-manial-original-imafjwaujyr24csc.jpeg?q=70"
-    },
-]
+import HashLoader from 'react-spinners/HashLoader';
+
 
 const ServiceHighlights = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(loadAllServices())
+    }, [])
+
+    const services = useSelector(state=>(state.services.allService[0]))
+    const servicesLoading = useSelector(state=>(state.services.loadingStatus))
+    const servicesLoadError = useSelector(state=>(state.services.rejectedMessage))
+    
+    if (servicesLoadError) {
+        return <h1>{servicesLoadError}</h1>
+    }
+    
     return (
         <div className='container mx-auto my-6'>
             <h1 className='text-xl md:text-3xl text-center font-bold'>Best Babysitter and Nanny Service</h1>
-            <div className='grid grid-cols-3 gap-x-4 mt-6'>
-                {
-                    services.map(service=><Service service={service} key={service.service_id}></Service>)
-                }
-            </div>
+            {
+                servicesLoading ? <div className='w-2 h-2 mx-auto mt-16'>
+                        <div className="sweet-loading ">
+                            <HashLoader loading={servicesLoading} size='80' color='#559900'/>
+                        </div>  
+                    </div>
+                :   <div className='grid grid-cols-3 gap-x-4 mt-6'>
+                        {
+                            services?.map(service=><Service service={service} key={service.service_id}></Service>)
+                        }
+                    </div>
+            }
         </div>
     );
 };
