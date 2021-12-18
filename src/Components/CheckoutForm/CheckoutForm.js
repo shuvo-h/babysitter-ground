@@ -115,7 +115,7 @@ const CheckoutForm = ({payment, bookingId}) => {
                 }}
             />
             {
-                processing ? <span>Processing..</span> : <button type="submit" disabled={!stripe || success}> Pay ${payment}</button>
+                processing ? <span>Processing..</span> : <button className='bg-blue-300 px-4 py-1 font-bold rounded text-green-700 hover:bg-green-200 block mx-auto my-2 ' type="submit" disabled={!stripe || success}> Pay ${payment}</button>
             }
             
         </form>
