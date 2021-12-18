@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addAllService, loadAllServices } from '../../../redux/slices/serviceSlice';
-import Service from '../../Services/Service/Service';
-
 import HashLoader from 'react-spinners/HashLoader';
+import Service from '../../Components/Services/Service/Service';
+import { loadAllServices } from '../../redux/slices/serviceSlice';
 
-
-const ServiceHighlights = () => {
+const AllServices = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(loadAllServices())
     }, [])
 
-    const services = useSelector(state=>(state.services.allService[0])?.slice(0,4))
+    const services = useSelector(state=>(state.services.allService[0]))
     const servicesLoading = useSelector(state=>(state.services.loadingStatus))
-    const servicesLoadError = useSelector(state=>(state.services.rejectedMessage))
-    
-    if (servicesLoadError) {
-        return <h1>{servicesLoadError}</h1>
-    }
-    
+
     return (
         <div className='container mx-auto my-6'>
             <h1 className='text-xl md:text-3xl text-center font-bold'>Best Babysitter and Nanny Service</h1>
@@ -30,7 +23,7 @@ const ServiceHighlights = () => {
                             <HashLoader loading={servicesLoading} size='80' color='#559900'/>
                         </div>  
                     </div>
-                :   <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-x-4 mt-6'>
+                :   <div className='grid grid-cols-3 gap-x-4 mt-6'>
                         {
                             services?.map(service=><Service service={service} key={service.service_id}></Service>)
                         }
@@ -40,4 +33,4 @@ const ServiceHighlights = () => {
     );
 };
 
-export default ServiceHighlights;
+export default AllServices;

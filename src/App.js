@@ -16,6 +16,10 @@ import RegistrationSitter from './Components/AdminAuthority/RegistrationSitter/R
 import AllServicesDboard from './Components/DashboardComponents/AllServicesDboard/AllServicesDboard';
 import AddService from './Components/DashboardComponents/AddService/AddService';
 import BookingSitter from './Pages/BookingSitter/BookingSitter';
+import AllServices from './Pages/AllServices/AllServices';
+import Speciality from './Pages/Speciality/Speciality';
+import TeamMembers from './Pages/TeamMembers/TeamMembers';
+import Blogs from './Pages/Blogs/Blogs';
 
 
 function App() {
@@ -31,7 +35,11 @@ function App() {
               <Route path="all-services" element={<PrivateRoute><AllServicesDboard></AllServicesDboard></PrivateRoute>}></Route>
               <Route path="add-service" element={<PrivateRoute><AddService></AddService></PrivateRoute>}></Route>
             </Route>
-            <Route path="/booking" element={<BookingSitter></BookingSitter>}></Route>
+            <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+            <Route path="/team" element={<TeamMembers></TeamMembers>}></Route>
+            <Route path="/speciality" element={<Speciality></Speciality>}></Route>
+            <Route path="/all-services" element={<AllServices></AllServices>}></Route>
+            <Route path="/booking" element={<PrivateRoute><BookingSitter></BookingSitter></PrivateRoute>}></Route>
             <Route path="/baby-sitters" element={<BabySitters></BabySitters>}></Route>
             <Route path="/parent-registration" element={<Registration></Registration>}></Route>
             <Route path="/sitter-registration" element={<RegistrationSitter></RegistrationSitter>}></Route>

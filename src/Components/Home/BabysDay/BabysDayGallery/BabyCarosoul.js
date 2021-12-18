@@ -26,8 +26,7 @@ SwiperCore.use([Autoplay,Pagination,Navigation]);
 
 export default function BabyCarosoul() {
   
-    const IMAGES = useSelector((state)=>(state.babysDayOut.allBabysDay[0]))
-    console.log("fetch",IMAGES);
+    const IMAGES = useSelector((state)=>(state.babysDayOut.allBabysDay[0]));
   
   return (
     <>

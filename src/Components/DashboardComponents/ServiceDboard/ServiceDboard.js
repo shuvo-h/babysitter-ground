@@ -5,7 +5,7 @@ const ServiceDboard = ({service, dispathch}) => {
     const {service_Price, service_img, service_str, service_title, _id} = service;
    
     const handleServiceDelete = (id) =>{
-        fetch(`http://localhost:5000/service/${id}`,{
+        fetch(`https://sheltered-temple-15299.herokuapp.com/service/${id}`,{
             method:"DELETE"
         })
             .then(res=>res.json())

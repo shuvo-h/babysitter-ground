@@ -3,6 +3,7 @@ import BabysDayGallery from '../../Components/Home/BabysDay/BabysDayGallery/Baby
 import Header from '../../Components/Home/Header/Header';
 import ServiceHighlights from '../../Components/Home/ServiceHighlights/ServiceHighlights';
 import WorkProcess from '../../Components/Home/WorkProcess/WorkProcess';
+import Footer from '../../Components/Shared/Footer/Footer';
 
 const HomeCombinder = () => {
     return (
@@ -11,6 +12,7 @@ const HomeCombinder = () => {
             <ServiceHighlights></ServiceHighlights>
             <BabysDayGallery></BabysDayGallery>
             <WorkProcess></WorkProcess>
+            <Footer></Footer>
         </div>
     );
 };

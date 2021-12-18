@@ -2,21 +2,21 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // create the thunk for loading parents all data
 export const loadAllParents = createAsyncThunk('dashboard/allParents', async () => {
-      const response = await fetch("http://localhost:5000/parents")
+      const response = await fetch("https://sheltered-temple-15299.herokuapp.com/parents")
         .then(res=>res.json())
         return response;
     }
   )
 // create the thunk for loading sitters all data
 export const loadAllSitters = createAsyncThunk('dashboard/allSitters', async () => {
-      const response = await fetch("http://localhost:5000/allSitters")
+      const response = await fetch("https://sheltered-temple-15299.herokuapp.com/allSitters")
         .then(res=>res.json())
         return response;
     }
   )
 // create the thunk for loading services all data
 export const loadAllServices = createAsyncThunk('dashboard/allServices', async () => {
-      const response = await fetch("http://localhost:5000/services")
+      const response = await fetch("https://sheltered-temple-15299.herokuapp.com/services")
         .then(res=>res.json())
         return response;
     }

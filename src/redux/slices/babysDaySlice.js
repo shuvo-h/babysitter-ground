@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // define async function to load dada from API 
 export const loadBabysDay = createAsyncThunk("BabysDay/babysDayImg", async()=>{
-    const response = await fetch("http://localhost:5000/babysday")
+    const response = await fetch("https://sheltered-temple-15299.herokuapp.com/babysday")
         .then(res=>res.json())
     return response;
 })

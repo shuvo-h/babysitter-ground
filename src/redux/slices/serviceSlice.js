@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // First, create the thunk
 export const loadAllServices = createAsyncThunk('Services/allServices', async () => {
-      const response = await fetch("http://localhost:5000/services")
+      const response = await fetch("https://sheltered-temple-15299.herokuapp.com/services")
         .then(res=>res.json())
         return response;
     }

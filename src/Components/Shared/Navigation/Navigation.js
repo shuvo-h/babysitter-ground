@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { IconContext } from "react-icons";
+import { ImMenu } from 'react-icons/im';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -6,7 +8,7 @@ import useAuth from '../../../hooks/useAuth';
 import { changeAboutDpDn, changeMobileOpen, changeProfileDpDn, changeWindowScreen } from '../../../redux/slices/navResponsiveSlice';
 
 // Tailwind CSS style classes  
-const brandStyle = 'text-3xl font-extrabold text-blue-700 md:flex text-center items-center';
+const brandStyle = 'text-3xl font-extrabold text-blue-700 md:flex text-center items-center py-3';
 const toggleIconStyle = 'absolute right-2 top-1 cursor-pointer';
 const navItelsStyle = 'flex flex-col md:flex-row text-center w-screen md:w-auto';
 const navLinkStyle = "px-3 py-4 text-lg font-bold hover:text-blue-500 hover:bg-green-200 block md:inline-block";
@@ -40,24 +42,23 @@ const Navigation = () => {
     return (
         <div className='md:flex flex-row  justify-evenly  bg-blue-200'>
             <div className={brandStyle}>BabySitter Ground </div>
-            <div><span className={isWindowScreen < 768 ? toggleIconStyle : "hidden"} onClick={handleMobileOpen}>X</span></div>
+            <div><span className={isWindowScreen < 768 ? toggleIconStyle : "hidden"} onClick={handleMobileOpen}>
+                    <IconContext.Provider value={{ color: "green", className: "global-class-name", size:50 }}><ImMenu /> </IconContext.Provider>
+                </span></div>
             <div className={isMobileOpen || isWindowScreen > 768 ? "": "hidden"}>
                 <ul className={navItelsStyle}>
+                    <li><NavLink to="/home" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>Home</NavLink></li>
                     <li className='relative' onMouseEnter={()=>dispatch(changeAboutDpDn())} onMouseLeave={()=>dispatch(changeAboutDpDn())} > <span  className={navDpDnMenuStyle}> About US</span>
                     {
                         isAboutDpDn && <ul className={navDpDnItemsStyle}>
-                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="">Our Services</NavLink></li>
-                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="">Our Blogs 1</NavLink></li>
-                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="">Our Blogs 2</NavLink></li>
-                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="">Our Blogs 3</NavLink></li>
-                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="">Our Blogs 4</NavLink></li>
-                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="">Our Blogs 5</NavLink></li>
+                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="/all-services">Our Services</NavLink></li>
+                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="/speciality">Our Speciality</NavLink></li>
+                            <li className={navDpDnItemStyle} onClick={()=>dispatch(changeAboutDpDn())}><NavLink to="/team">Team Members</NavLink></li>
                         </ul>
                     }
                         
                     </li>
-                    <li><NavLink to="/" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>Families</NavLink></li>
-                    <li><NavLink to="/" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>Hostels</NavLink></li>
+                    <li><NavLink to="/blogs" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>Blogs</NavLink></li>
                     <li><NavLink to="/baby-sitters" className={({isActive})=> isActive ? activeNavLink : navLinkStyle}>BabySitters</NavLink></li>
                 </ul>
             </div>
@@ -77,7 +78,7 @@ const Navigation = () => {
                     </div>
                 }
                 {
-                    !user.email && <div className='flex items-center'><NavLink className='font-bold' to="/login">Login/Register</NavLink></div>
+                    !user.email && <div className={isMobileOpen || isWindowScreen > 768 ? "flex items-center justify-center": "hidden"} ><NavLink className='font-bold py-4' to="/login">Login/Register</NavLink></div>
                 }
         </div>
     );

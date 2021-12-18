@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // First, create the thunk for loading all booking info for specifiq parent
 export const loadBookings = createAsyncThunk('bookings/booking', async (email) => {
-    const response = await fetch("http://localhost:5000/booking-list",{
+    const response = await fetch("https://sheltered-temple-15299.herokuapp.com/booking-list",{
         method:"POST",
         headers:{
             "content-type":"application/json"

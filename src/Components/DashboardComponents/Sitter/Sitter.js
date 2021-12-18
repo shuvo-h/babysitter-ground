@@ -5,7 +5,7 @@ const Sitter = ({sitter, dispathch}) => {
     const {email, name, payment, photoURL, _id} = sitter;
    
     const handleParentDelete = (id) =>{
-        fetch(`http://localhost:5000/sitters/${id}`,{
+        fetch(`https://sheltered-temple-15299.herokuapp.com/sitters/${id}`,{
             method:"DELETE"
         })
             .then(res=>res.json())

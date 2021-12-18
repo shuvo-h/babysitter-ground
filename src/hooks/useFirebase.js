@@ -46,7 +46,7 @@ const useFirebase = () => {
     },[auth])
 
     const sendInfoToDB = (info) =>{
-        fetch("http://localhost:5000/parents",{
+        fetch("https://sheltered-temple-15299.herokuapp.com/parents",{
             method:"POST",
             headers: {
                 "content-type":"application/json"
@@ -61,7 +61,7 @@ const useFirebase = () => {
             })
     }
     const sendSitterInfoToDB = (info) =>{
-        fetch("http://localhost:5000/sitters",{
+        fetch("https://sheltered-temple-15299.herokuapp.com/sitters",{
             method:"POST",
             headers: {
                 "content-type":"application/json"

@@ -30,7 +30,7 @@ const BookingSitter = () => {
     const handleBooking = e =>{
         dispatch(setEmailToBState(user.email))
         console.log(bookingData);
-        fetch("http://localhost:5000/booking",{
+        fetch("https://sheltered-temple-15299.herokuapp.com/booking",{
             method:"POST",
             headers: {
                 "content-type":"application/json"
