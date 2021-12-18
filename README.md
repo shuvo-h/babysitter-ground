@@ -22,6 +22,7 @@ This website is developed for a baby sitter management agency. All information r
 - User can book a place when they need to care her baby.
 - Admin can add or delete new services from the admin dashboard.
 - The development history for the agency can be found in this website.
+- Payment is accepted through credit card. 
 
 ## Development Features:
 - REACT library is used to developed the frontEnd components.
@@ -31,7 +32,7 @@ This website is developed for a baby sitter management agency. All information r
 - Data has been loaded and saved from/in mongoDB Atlas. 
 - Firebase authentication system is used as a login system 
 - React router was used to navigate the route and traking the protected url path.
-
+- Stripe payment method is added to receive USD. 
 
 
 ## Authors
