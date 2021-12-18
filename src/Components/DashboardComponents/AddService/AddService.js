@@ -14,7 +14,7 @@ const AddService = () => {
         setNewServiceInfo(newInfo);
     }
     const handleRegHandle = e =>{
-        console.log(newServiceInfo);
+        
         fetch("https://sheltered-temple-15299.herokuapp.com/services",{
             method:"POST",
             headers: {

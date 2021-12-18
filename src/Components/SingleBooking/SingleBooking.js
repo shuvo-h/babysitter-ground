@@ -17,6 +17,7 @@ const SingleBooking = ({booking}) => {
                 if (data.deletedCount > 0) {
                     alert("Booking is Cancelled successfully!");
                     // dispathch(updateDeleteSitter(id))
+                    window.location.reload();
                 }
             })
     }

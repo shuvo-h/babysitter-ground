@@ -9,7 +9,7 @@ const AllServicesDboard = () => {
         dispathch(loadAllServices())
     },[])
     const allServices = useSelector((state)=>(state.dashboard.services.allServices[0])) || [];
-console.log(allServices);
+    
     return (
         <div className='container text-center'>
             <table className='table-auto w-full '>

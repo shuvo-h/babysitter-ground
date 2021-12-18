@@ -11,8 +11,9 @@ const ServiceDboard = ({service, dispathch}) => {
             .then(res=>res.json())
             .then(data=>{
                 if (data.deletedCount > 0) {
-                    alert("Parent is deleted successfully!");
+                    alert("Service is deleted successfully!");
                     dispathch(updateDeleteSservice(id))
+                    window.location.reload();
                 }
             })
     }

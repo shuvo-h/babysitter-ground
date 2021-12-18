@@ -26,7 +26,7 @@ const RegistrationSitter = () => {
                 about: newUserInfo.about,
             }
             registerNewUser(newUserInfo.fullName,newUserInfo.email,newUserInfo.password,newUserInfo.photoUrl,"sitter",navigate,extraInfo);
-            console.log(newUserInfo);
+            
         }else if (newUserInfo.password !== newUserInfo.confirmPassword) {
             alert("Password didn't match.")
         }

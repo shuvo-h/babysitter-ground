@@ -5,7 +5,8 @@ import { FaHandPointRight } from 'react-icons/fa';
 
 const Service = ({service}) => {
     const {service_Price,service_img, service_str,service_title, service_view } = service;
-    console.log(service);
+    
+    
 
     return (
         <div className='border-2 p-3 rounded-lg'>

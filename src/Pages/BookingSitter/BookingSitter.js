@@ -29,7 +29,7 @@ const BookingSitter = () => {
     const bookingData = {...inputFieldValue,  email:user.email, pay_status: "unpaid", payment: 10.50}
     const handleBooking = e =>{
         dispatch(setEmailToBState(user.email))
-        console.log(bookingData);
+        
         fetch("https://sheltered-temple-15299.herokuapp.com/booking",{
             method:"POST",
             headers: {
@@ -41,6 +41,7 @@ const BookingSitter = () => {
             .then(data=>{
                 if (data.insertedId) {
                     alert("Booking successful.")
+                    window.location.reload();
                 }
             })
 

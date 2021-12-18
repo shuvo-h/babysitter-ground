@@ -20,7 +20,7 @@ const Registration = () => {
         if (newUserInfo.password === newUserInfo.confirmPassword) {
             newUserInfo.fullName = newUserInfo.fname.concat(" ",newUserInfo.lname);
             registerNewUser(newUserInfo.fullName,newUserInfo.email,newUserInfo.password,newUserInfo.photoUrl,"parent",navigate);
-            console.log(newUserInfo);
+            
         }else if (newUserInfo.password !== newUserInfo.confirmPassword) {
             alert("Password didn't match.")
         }

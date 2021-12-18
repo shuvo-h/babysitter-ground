@@ -74,8 +74,7 @@ const CheckoutForm = ({payment, bookingId}) => {
                 bookingId,
                 pay_status: "Paid"
             } 
-            console.log(paymentIntent);
-            console.log(paymentSuccessInfo);
+            
 
             fetch("https://sheltered-temple-15299.herokuapp.com/booking",{
                 method:"PUT",

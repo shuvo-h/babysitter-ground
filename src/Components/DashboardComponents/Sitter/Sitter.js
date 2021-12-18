@@ -11,8 +11,9 @@ const Sitter = ({sitter, dispathch}) => {
             .then(res=>res.json())
             .then(data=>{
                 if (data.deletedCount > 0) {
-                    alert("Parent is deleted successfully!");
+                    alert("Sitter is deleted successfully!");
                     dispathch(updateDeleteSitter(id))
+                    window.location.reload();
                 }
             })
     }

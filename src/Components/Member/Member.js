@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Member = ({member}) => {
-    console.log(member);
+    
     const {Email, member_img, mob, name, roll, text, working_exp} = member;
     return (
         <div className="border rounded-lg p-4 shadow-lg">

@@ -13,6 +13,7 @@ const parent = ({parent, dispathch}) => {
                 if (data.deletedCount > 0) {
                     alert("Parent is deleted successfully!");
                     dispathch(updateDeleteParent(id))
+                    window.location.reload();
                 }
             })
     }

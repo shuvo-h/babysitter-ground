@@ -9,7 +9,7 @@ const BabySitters = () => {
         dispathch(loadAllSitters())
     },[])
     const allSitters = useSelector((state)=>(state.dashboard.sitters.allSitters[0])) || [];
-    console.log(allSitters);
+    
     return (
         <div className='container mx-auto text-center my-3'>
             <h2 className='font-bold text-2xl'>Our Experienced Sitters</h2>
