@@ -21,6 +21,7 @@ import Speciality from './Pages/Speciality/Speciality';
 import TeamMembers from './Pages/TeamMembers/TeamMembers';
 import Blogs from './Pages/Blogs/Blogs';
 import Payment from './Pages/Payment/Payment';
+import RichTextEditor from './Components/RichTextEditor/RichTextEditor';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
               <Route path="add-service" element={<PrivateRoute><AddService></AddService></PrivateRoute>}></Route>
             </Route>
             <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+            <Route path="/blogs/add" element={<RichTextEditor></RichTextEditor>}></Route>
             <Route path="/team" element={<TeamMembers></TeamMembers>}></Route>
             <Route path="/speciality" element={<Speciality></Speciality>}></Route>
             <Route path="/all-services" element={<AllServices></AllServices>}></Route>
