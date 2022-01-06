@@ -18,52 +18,38 @@ const RichTextEditor = () => {
     // save data to server 
     const [isError,setIsError] = useState(null);
     const addDetails = async(e) =>{
-        console.log("sending data");
-        try{
-            e.preventDefault();
-            e.persist();
-            if (blogInfo.description.value.length < 50) {
-                setIsError("Required minimum 50 words description");
-                return;
+        e.preventDefault();
+        e.persist();
+        if (blogInfo.description.value.length < 50) {
+            setIsError("Required minimum 50 words description");
+            return;
+        }
+        fetch("https://sheltered-temple-15299.herokuapp.com/addBlog",{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify({title:blogInfo.title, description:blogInfo.description.value})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if (data.insertedId) {
+                alert("Blog posted successfully!")
             }
-            fetch("https://sheltered-temple-15299.herokuapp.com/addBlog",{
-                method:"POST",
-                headers:{
-                    "content-type":"application/json"
-                },
-                body:JSON.stringify({title:blogInfo.title, description:blogInfo.description.value})
-            })
-            .then(res=>res.json())
-            .then(data=>{
-                if (data.insertedId) {
-                    alert("Blog posted successfully!")
-                }
-            })
-            // axios.post("http://localhost:5000/addArticle",{
-            //     title: blogInfo.title,
-            //     description: blogInfo.description.value
-            // })
-            // .then(res=>{
-            //     console.log(res.data.insertedId);
-            //     if (res.data.insertedId) {
-            //         alert("Data saved successful");
-            //         navigate("/");
-            //     }
-            // })
-        }catch{}
+        })
     }
 
 
     return (
-        <div>
+        <div style={{margin:"2% 10%"}}>
             <h2>Write Your Blog Here</h2>
             <form onSubmit={addDetails}>
-                <p>Title</p>
-                <input value={blogInfo.title} onChange={onChange} type="text" name='title' placeholder='Write the blog title'/>
+                <p>Blog Title:</p>
+                <input value={blogInfo.title} onChange={onChange} style={{backgroundColor:"rgba(0,0,225,0.2)", width:"100%"}} type="text" name='title'/>
 
-                <p>Description</p>
+                <p>Blog Description</p>
                 <Editor
-                    editorStyle={{border:"1px solid white", padding:"10px", margin:"10px"}}
+                    editorStyle={{border:"1px solid white", padding:"10px", margin:"10px", backgroundColor:"rgba(10,40,40,0.1)"}}
                     editorState={description}
                     onEditorStateChange={onEditorStateChange}
                 />
@@ -71,7 +57,7 @@ const RichTextEditor = () => {
                 {
                     isError && <p style={{color:"red"}}>{isError}</p>
                 }
-                    <button type="submit">Post blog</button>
+                    <button style={{backgroundColor:"rgba(0,0,225,0.2)", padding:"3px 8px", borderRadius:"7px", display:"block", margin:"auto"}} type="submit">Post blog</button>
             </form>
         </div>
     );
