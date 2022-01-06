@@ -26,7 +26,7 @@ const RichTextEditor = () => {
                 setIsError("Required minimum 50 words description");
                 return;
             }
-            fetch("http://localhost:5000/addBlog",{
+            fetch("https://sheltered-temple-15299.herokuapp.com/addBlog",{
                 method:"POST",
                 headers:{
                     "content-type":"application/json"

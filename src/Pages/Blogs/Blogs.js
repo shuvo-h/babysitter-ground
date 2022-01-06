@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:5000/blogs")
+        fetch("https://sheltered-temple-15299.herokuapp.com/blogs")
         .then(res=>res.json())
         .then(data=>{
             const reverseData = data.reverse()
