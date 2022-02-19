@@ -13,7 +13,7 @@ const ServiceHighlights = () => {
         dispatch(loadAllServices())
     }, [])
 
-    const services = useSelector(state=>(state.services.allService[0])?.slice(0,4))
+    const services = useSelector(state=>(state.services.allService[0])?.slice(0,3))
     const servicesLoading = useSelector(state=>(state.services.loadingStatus))
     const servicesLoadError = useSelector(state=>(state.services.rejectedMessage))
     
